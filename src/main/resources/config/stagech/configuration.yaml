@@ -1,0 +1,123 @@
+server:
+  #adminMinThreads: 1
+  #adminMaxThreads: 64
+  applicationConnectors:
+    - type: http
+      port: 23310
+    #- type: https
+    #  port: 8443
+    #  keyStorePath: example.keystore
+    #  keyStorePassword: example
+    #  validateCerts: false
+  adminConnectors:
+    - type: http
+      port: 23311
+    #- type: https
+    #  port: 8444
+    #  keyStorePath: example.keystore
+    #  keyStorePassword: example
+    #  validateCerts: false
+  requestLog:
+     timeZone: IST
+     appenders:
+       - type: file
+         currentLogFilename: /var/log/flipkart/erp/fk-cs-titans-ndr/requestList.log
+         archive: true
+         archivedLogFilenamePattern: /var/log/flipkart/erp/check-post/requestList-%d{yyyy-MM-dd}.log.gz
+         archivedFileCount: 50
+
+logging:
+  level: INFO
+  appenders:
+      - type: console
+      - type: file
+        threshold: ALL
+        timeZone: IST
+        logFormat: "%date %level [%thread] %logger{10} [%X{id}] %msg%n"
+        currentLogFilename: /var/log/flipkart/erp/fk-cs-titans-ndr/ndr.log
+        archive: true
+        archivedLogFilenamePattern: /var/log/flipkart/erp/fk-cs-titans-ndr/ndr-%d{yyyy-MM-dd}.log
+        archivedFileCount: 20
+
+database:
+  # the name of your JDBC driver
+  driverClass: com.mysql.jdbc.Driver
+  # the username
+  user: root
+  # the password
+  password:
+  # the JDBC URL
+  url: jdbc:mysql://flo-crm-db1.stage.ch.flipkart.com/checkpost
+  # any properties specific to your JDBC driver:
+  properties:
+   charSet: UTF-8
+   hibernate.show_sql: true
+   hibernate.hbm2ddl.auto: validate
+   hibernate.session.events.log: false
+
+  # the maximum amount of time to wait on an empty pool before throwing an exception
+  maxWaitForConnection: 1s
+  # the SQL query to run when validating a connection's liveness
+  validationQuery: "/* MyApplication Health Check */ SELECT 1"
+  # the minimum number of connections to keep open
+  minSize: 2
+
+  # the maximum number of connections to keep open
+  maxSize: 32
+  # whether or not idle connections should be validated
+  checkConnectionWhileIdle: false
+  checkConnectionOnBorrow: true
+  maxConnectionAge : 10s
+
+rotationManagementConfig:
+ persistantFilePath: "/var/log/flipkart/erp/fk-cs-titans-ndr/rotation_status.txt"
+
+redisConfiguration:
+  master: titans-redis-cold
+  sentinels: 10.65.153.95:26379,10.65.153.96:26379,10.65.153.97:26379
+  client: ctc
+  ttl: 86400
+  password: foobared
+
+configParams:
+  protocol: http
+  server: 10.84.30.170
+  port: 80
+  timeOut: 5000
+  apiVersion: 1
+  bucket: cs-ndr
+
+rabbitMQConfiguration:
+  server: 10.65.155.106
+  port: 5672
+  exchange_name: InboundCallRouter
+  exchange_type: direct
+
+reachoutConfiguration:
+  protocol: http
+  server: localhost
+  port: 27700
+
+commServiceConfiguration:
+  protocol: http
+  host: 10.65.30.26
+  basePath: /fk-w3-commsvc-trans/rest/
+  clientName: cs-reachout
+  port: 80
+  timeOut: 5000
+
+agentMgrServiceConfig:
+  protocol: http
+  server: cs-agent-mgr-internal.vip.nm.flipkart.com
+  port: 80
+
+resolutionToolConfiguration:
+  protocol: http
+  server: cs-ndr-ivr.vip.nm.flipkart.com
+  port: 80
+
+resolutionToolQueueConfiguration:
+    protocol: http
+    server: cs-ndr-ivr.vip.nm.flipkart.com
+    port: 80
+    queueName: production-cs-titans-ndr-action
