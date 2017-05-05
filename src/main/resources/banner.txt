@@ -19,12 +19,6 @@ BBBBBBBBBBBBBBBBB    SSSSSSSSSSSSSSS         ttttttttttt    aaaaaaaaaa  aaaa    
 
 
 
-
-
-
-
-
-
                     IIIIIIIIIIMMMMMMMM               MMMMMMMM   SSSSSSSSSSSSSSS
                     I::::::::IM:::::::M             M:::::::M SS:::::::::::::::S
                     I::::::::IM::::::::M           M::::::::MS:::::SSSSSS::::::S
@@ -41,9 +35,4 @@ BBBBBBBBBBBBBBBBB    SSSSSSSSSSSSSSS         ttttttttttt    aaaaaaaaaa  aaaa    
                     I::::::::IM::::::M               M::::::MS::::::SSSSSS:::::S
                     I::::::::IM::::::M               M::::::MS:::::::::::::::SS
                     IIIIIIIIIIMMMMMMMM               MMMMMMMM SSSSSSSSSSSSSSS
-
-
-
-
-
 
