@@ -1,6 +1,6 @@
 package bStat.ims.com.resources;
 
-import bStat.com.common.dao.RawMaterialsDao;
+import bStat.ims.com.common.dao.RawMaterialsDao;
 import bStat.ims.com.controllers.ProductTransactionsController;
 import com.codahale.metrics.annotation.ExceptionMetered;
 import com.codahale.metrics.annotation.Timed;

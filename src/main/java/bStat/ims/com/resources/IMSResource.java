@@ -1,9 +1,8 @@
-package bStat.com.resources;
+package bStat.ims.com.resources;
 
-import bStat.com.common.exceptions.ApiException;
+import bStat.ims.com.common.exceptions.ApiException;
 import bStat.ims.com.common.models.tables.Store;
 import bStat.ims.com.controllers.StoresController;
-import bStat.com.utils.*;
 import com.codahale.metrics.annotation.ExceptionMetered;
 import com.codahale.metrics.annotation.Timed;
 import com.google.inject.Inject;
