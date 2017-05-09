@@ -1,48 +1,28 @@
-package bStat.ims.com.common.models.tables;
+package bStat.ims.com.Request;
 
-import javax.persistence.*;
+import javax.persistence.Column;
 
 /**
- * Created by Yashi Agarwal on 02-05-2017.
+ * Created by prashant.agarwal on 10/05/17.
  */
+public class StoreRequest {
 
-@Entity
-@Table(name = "stores")
-public class Store {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long id;
-
-    @Column(name = "address")
     private long address;
 
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "phone_number")
     private int phone_number;
 
-    @Column(name = "incharge_person")
     private String inchargePerson;
 
-    public Store() {
+    public StoreRequest() {
     }
 
-    public Store(long address, String name, int phone_number, String inchargePerson) {
+    public StoreRequest(long address, String name, int phone_number, String inchargePerson) {
         this.address = address;
         this.name = name;
         this.phone_number = phone_number;
         this.inchargePerson = inchargePerson;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public long getAddress() {

@@ -1,4 +1,4 @@
-package bStat.com.common.dao;
+package bStat.ims.com.common.dao;
 
 import bStat.ims.com.common.models.tables.Store;
 import com.google.inject.Inject;
