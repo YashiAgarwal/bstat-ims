@@ -28,13 +28,14 @@ database:
   user: root
   # the password
   password: GAneshjI
+
   # the JDBC URL
   url: jdbc:mysql://localhost:3306/bstat-ims-db
   # any properties specific to your JDBC driver:
   properties:
     charSet: UTF-8
     hibernate.show_sql: true
-    hibernate.hbm2ddl.auto: create #validate
+    hibernate.hbm2ddl.auto: validate
     hibernate.generate_statistics : false
 
   # the maximum amount of time to wait on an empty pool before throwing an exception
