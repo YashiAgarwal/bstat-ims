@@ -19,7 +19,7 @@ public class StockInStore {
     @Column(name = "store_id")
     private long storeId;
 
-    @Column(name = "product_id")
+    @Column(name = "product_id")        //can be raw material/product
     private long productId;
 
     @Column(name = "quantity")

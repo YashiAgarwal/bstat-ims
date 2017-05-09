@@ -1,25 +1,56 @@
 package bStat.com.resources;
 
+import bStat.com.common.exceptions.ApiException;
+import bStat.com.common.models.tables.Store;
+import bStat.com.controllers.StoresController;
 import bStat.com.utils.*;
+import com.codahale.metrics.annotation.ExceptionMetered;
+import com.codahale.metrics.annotation.Timed;
 import com.google.inject.Inject;
+import io.dropwizard.hibernate.UnitOfWork;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  * Created by prashant170392 on 01/05/2017
  */
 
-@Path("/ndr")
+@Path("/ims")
 @Produces(MediaType.APPLICATION_JSON)
 public class IMSResource {
 
     @Inject
-    private HttpService httpService;
+    private StoresController storesController;
 
     private static final Logger logger = LoggerFactory.getLogger(IMSResource.class);
 
+    //Add a new store entry
+    @POST
+    @Path("/new/store")
+    @Produces(MediaType.APPLICATION_JSON)
+    @UnitOfWork
+    @Timed
+    @ExceptionMetered
+    public Response addStore(Store store) {
+        try {
+            storesController.addNewStore(store);
+        } catch (Exception e) {
+            logger.error("Add New Store Exception", e.getMessage());
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e).build();
+        }
+        return Response.ok().build();
+    }
 
+    //Get all stores
+    //Add a new Raw Material Entry
+    //Get all raw materials
+    //Get stocks in store X
+    //Get stock in All stores
+
+    //Get Product Inventory of Product X
+    //Get Raw Material Inventory of Raw Material X
 }

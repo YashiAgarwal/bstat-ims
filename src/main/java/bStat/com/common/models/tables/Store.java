@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "stores")
-public class Stores {
+public class Store {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +16,7 @@ public class Stores {
     private long id;
 
     @Column(name = "address")
-    private String address;
+    private long address;
 
     @Column(name = "name")
     private String name;
@@ -27,10 +27,10 @@ public class Stores {
     @Column(name = "incharge_person")
     private String inchargePerson;
 
-    public Stores() {
+    public Store() {
     }
 
-    public Stores(Long id, String address, String name, int phone_number, String inchargePerson) {
+    public Store(Long id, long address, String name, int phone_number, String inchargePerson) {
         this.id = id;
         this.address = address;
         this.name = name;
@@ -46,11 +46,11 @@ public class Stores {
         this.id = id;
     }
 
-    public String getAddress() {
+    public long getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(long address) {
         this.address = address;
     }
 

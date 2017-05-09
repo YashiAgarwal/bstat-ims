@@ -30,7 +30,7 @@ public class IMSApplication extends Application<IMSConfiguration> {
     }
 
     private final HibernateBundle<IMSConfiguration> hibernate = new HibernateBundle<IMSConfiguration>(RawMaterials.class,
-            ProductsInventory.class, StockInStore.class, Stores.class, RawMaterialsInventory.class, RawMaterialTransactions.class,
+            ProductsInventory.class, StockInStore.class, Store.class, RawMaterialsInventory.class, RawMaterialTransactions.class,
             ProductsTransactions.class) {
         @Override
         public DataSourceFactory getDataSourceFactory(IMSConfiguration imsConfiguration) {
