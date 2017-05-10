@@ -27,7 +27,7 @@ database:
   # the username
   user: root
   # the password
-  password: GAneshjI
+  password:
 
   # the JDBC URL
   url: jdbc:mysql://localhost:3306/bstat-ims-db

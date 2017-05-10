@@ -1,6 +1,6 @@
 package bStat.ims.com.common.dao;
 
-import bStat.ims.com.common.models.tables.Store;
+import bStat.ims.com.common.models.tables.Address;
 import com.google.inject.Inject;
 import io.dropwizard.hibernate.AbstractDAO;
 import io.dropwizard.hibernate.HibernateBundle;
@@ -10,19 +10,16 @@ import org.slf4j.LoggerFactory;
 /**
  * Created by Yashi Agarwal on 08-05-2017.
  */
-public class StoresDao extends AbstractDAO<Store> {
+public class AddressDao extends AbstractDAO<Address> {
 
-    private static final Logger logger = LoggerFactory.getLogger(StoresDao.class);
+    private static final Logger logger = LoggerFactory.getLogger(AddressDao.class);
 
     @Inject
-    public StoresDao(HibernateBundle bundle) {
+    public AddressDao(HibernateBundle bundle) {
         super(bundle.getSessionFactory());
     }
 
-    public void save(Store store) {
-        currentSession().save(store);
+    public void save(Address address) {
+        currentSession().save(address);
     }
-
-
-
 }

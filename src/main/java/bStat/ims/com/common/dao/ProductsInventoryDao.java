@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
  */
 public class ProductsInventoryDao extends AbstractDAO<ProductsInventory> {
 
-
     private static final Logger logger = LoggerFactory.getLogger(ProductsInventoryDao.class);
 
     @Inject

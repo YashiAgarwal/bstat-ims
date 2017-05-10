@@ -32,7 +32,7 @@ public class IMSApplication extends Application<IMSConfiguration> {
 
     private final HibernateBundle<IMSConfiguration> hibernate = new HibernateBundle<IMSConfiguration>(RawMaterials.class,
             ProductsInventory.class, StockInStore.class, Store.class, RawMaterialsInventory.class, RawMaterialTransactions.class,
-            ProductsTransactions.class) {
+            ProductsTransactions.class, Address.class) {
         @Override
         public DataSourceFactory getDataSourceFactory(IMSConfiguration imsConfiguration) {
             logger.info("Configuring database ...");
