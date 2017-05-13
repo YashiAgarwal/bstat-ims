@@ -8,9 +8,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 public class StoreRequest {
 
-    private long address;
+    private long addressId;
 
-    private String name;
+    private String storeName;
 
     private String phone_number;
 
@@ -24,27 +24,27 @@ public class StoreRequest {
         System.out.println(new ObjectMapper().writeValueAsString(storeRequest));
     }
 
-    public StoreRequest(long address, String name, String phone_number, String inchargePerson) {
-        this.address = address;
-        this.name = name;
+    public StoreRequest(long addressId, String storeName, String phone_number, String inchargePerson) {
+        this.addressId = addressId;
+        this.storeName = storeName;
         this.phone_number = phone_number;
         this.inchargePerson = inchargePerson;
     }
 
-    public long getAddress() {
-        return address;
+    public long getAddressId() {
+        return addressId;
     }
 
-    public void setAddress(long address) {
-        this.address = address;
+    public void setAddressId(long addressId) {
+        this.addressId = addressId;
     }
 
-    public String getName() {
-        return name;
+    public String getStoreName() {
+        return storeName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setStoreName(String storeName) {
+        this.storeName = storeName;
     }
 
     public String getPhone_number() {

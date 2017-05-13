@@ -22,7 +22,7 @@ public class StoresController {
     }
 
     public void addNewStore(StoreRequest storeRequest) {
-        Store store = new Store(storeRequest.getAddress(), storeRequest.getName(),
+        Store store = new Store(storeRequest.getAddressId(), storeRequest.getStoreName(),
                 storeRequest.getPhone_number(), storeRequest.getInchargePerson());
         storesDao.save(store);
         return;

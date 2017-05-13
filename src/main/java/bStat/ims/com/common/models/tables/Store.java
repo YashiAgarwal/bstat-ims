@@ -15,11 +15,11 @@ public class Store {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "address")
-    private long address;
+    @Column(name = "addressId")
+    private long addressId;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "store_name")
+    private String storeName;
 
     @Column(name = "phone_number")
     private String phone_number;
@@ -30,9 +30,9 @@ public class Store {
     public Store() {
     }
 
-    public Store(long address, String name, String phone_number, String inchargePerson) {
-        this.address = address;
-        this.name = name;
+    public Store(long addressId, String storeName, String phone_number, String inchargePerson) {
+        this.addressId = addressId;
+        this.storeName = storeName;
         this.phone_number = phone_number;
         this.inchargePerson = inchargePerson;
     }
@@ -45,20 +45,20 @@ public class Store {
         this.id = id;
     }
 
-    public long getAddress() {
-        return address;
+    public long getAddressId() {
+        return addressId;
     }
 
-    public void setAddress(long address) {
-        this.address = address;
+    public void setAddressId(long addressId) {
+        this.addressId = addressId;
     }
 
-    public String getName() {
-        return name;
+    public String getStoreName() {
+        return storeName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setStoreName(String storeName) {
+        this.storeName = storeName;
     }
 
     public String getPhone_number() {
