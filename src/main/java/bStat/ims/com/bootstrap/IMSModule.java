@@ -1,8 +1,13 @@
 package bStat.ims.com.bootstrap;
 
+import bStat.ims.com.common.dao.StoresDao;
 import bStat.ims.com.config.IMSConfiguration;
+import bStat.ims.com.controllers.ProductTransactionsController;
+import bStat.ims.com.controllers.StoresController;
 import com.codahale.metrics.MetricRegistry;
 import com.google.inject.AbstractModule;
+import com.google.inject.Provides;
+import com.google.inject.Singleton;
 import io.dropwizard.hibernate.HibernateBundle;
 import org.hibernate.SessionFactory;
 
@@ -37,5 +42,17 @@ public class IMSModule extends AbstractModule {
         bind(SessionFactory.class).toInstance(bundle.getSessionFactory());
         buckets = new ArrayList<String>();
         buckets.add(this.config.getConfigParams().getBucket());
+    }
+
+    @Provides
+    @Singleton
+    public StoresController provideStoresController(StoresDao storesDao) {
+        return new StoresController(storesDao);
+    }
+
+    @Provides
+    @Singleton
+    public ProductTransactionsController provideProductTransactionsController() {
+        return new ProductTransactionsController();
     }
 }

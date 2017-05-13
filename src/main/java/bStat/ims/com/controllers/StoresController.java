@@ -17,7 +17,8 @@ public class StoresController {
     private StoresDao storesDao;
 
     @Inject
-    public StoresController() {
+    public StoresController(StoresDao storesDao) {
+        this.storesDao = storesDao;
     }
 
     public void addNewStore(StoreRequest storeRequest) {

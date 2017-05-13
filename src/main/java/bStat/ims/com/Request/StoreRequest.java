@@ -1,6 +1,7 @@
 package bStat.ims.com.Request;
 
-import javax.persistence.Column;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * Created by prashant.agarwal on 10/05/17.
@@ -11,14 +12,19 @@ public class StoreRequest {
 
     private String name;
 
-    private int phone_number;
+    private String phone_number;
 
     private String inchargePerson;
 
     public StoreRequest() {
     }
 
-    public StoreRequest(long address, String name, int phone_number, String inchargePerson) {
+    public static void main(String[] args) throws JsonProcessingException {
+        StoreRequest storeRequest = new StoreRequest(123l, "Store1Name", "9535434455", "Prashant");
+        System.out.println(new ObjectMapper().writeValueAsString(storeRequest));
+    }
+
+    public StoreRequest(long address, String name, String phone_number, String inchargePerson) {
         this.address = address;
         this.name = name;
         this.phone_number = phone_number;
@@ -41,11 +47,11 @@ public class StoreRequest {
         this.name = name;
     }
 
-    public int getPhone_number() {
+    public String getPhone_number() {
         return phone_number;
     }
 
-    public void setPhone_number(int phone_number) {
+    public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
     }
 

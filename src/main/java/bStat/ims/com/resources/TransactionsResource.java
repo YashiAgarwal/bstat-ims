@@ -30,7 +30,7 @@ public class TransactionsResource {
 
     //Add a Raw Material Transaction
     @POST
-    @Path("/rm")
+    @Path("/rawMat/add")
     @Produces(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @Timed

@@ -22,7 +22,7 @@ public class Store {
     private String name;
 
     @Column(name = "phone_number")
-    private int phone_number;
+    private String phone_number;
 
     @Column(name = "incharge_person")
     private String inchargePerson;
@@ -30,7 +30,7 @@ public class Store {
     public Store() {
     }
 
-    public Store(long address, String name, int phone_number, String inchargePerson) {
+    public Store(long address, String name, String phone_number, String inchargePerson) {
         this.address = address;
         this.name = name;
         this.phone_number = phone_number;
@@ -61,11 +61,11 @@ public class Store {
         this.name = name;
     }
 
-    public int getPhone_number() {
+    public String getPhone_number() {
         return phone_number;
     }
 
-    public void setPhone_number(int phone_number) {
+    public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
     }
 
