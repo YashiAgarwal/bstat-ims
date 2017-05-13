@@ -1,6 +1,8 @@
 package bStat.ims.com.resources;
 
+import bStat.ims.com.Request.AddressRequest;
 import bStat.ims.com.Request.StoreRequest;
+import bStat.ims.com.Response.SuccessResponse;
 import bStat.ims.com.common.dao.StoresDao;
 import bStat.ims.com.common.exceptions.ApiException;
 import bStat.ims.com.common.exceptions.ResponseErrorMsg;
@@ -10,6 +12,7 @@ import com.codahale.metrics.annotation.ExceptionMetered;
 import com.codahale.metrics.annotation.Timed;
 import com.google.inject.Inject;
 import io.dropwizard.hibernate.UnitOfWork;
+import org.eclipse.jetty.http.HttpStatus;
 import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +24,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -48,8 +52,9 @@ public class IMSResource {
     @ExceptionMetered
     public Response addStore(@Valid StoreRequest storeRequest) throws ApiException {
         try {
-            storesController.addNewStore(storeRequest);
-            return Response.ok().build();
+            Serializable serializable = storesController.addNewStore(storeRequest);
+            return Response.ok(new SuccessResponse(HttpStatus.OK_200, "New Store added successfully",
+                    ((Long) serializable).byteValue())).build();
         } catch (Exception e) {
             logger.error("Add New Store Exception", e.getMessage(), e);
             throw new ApiException(Response.Status.INTERNAL_SERVER_ERROR, "Add New Store Exception");
@@ -57,6 +62,24 @@ public class IMSResource {
         }
     }
 
+    //Add a new address entry
+    @POST
+    @Path("/new/address")
+    @Produces(MediaType.APPLICATION_JSON)
+    @UnitOfWork
+    @Timed
+    @ExceptionMetered
+    public Response addAddress(@Valid AddressRequest addressRequest) throws ApiException {
+        try {
+            Serializable serializable = storesController.addNewAddress(addressRequest);
+            return Response.ok(new SuccessResponse(HttpStatus.OK_200, "Address added successfully",
+                    ((Long) serializable).byteValue())).build();
+        } catch (Exception e) {
+            logger.error("Add New Store Exception", e.getMessage(), e);
+            throw new ApiException(Response.Status.INTERNAL_SERVER_ERROR, "Add New Address Exception");
+            //Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
+        }
+    }
 
     //Get all stores
     @GET

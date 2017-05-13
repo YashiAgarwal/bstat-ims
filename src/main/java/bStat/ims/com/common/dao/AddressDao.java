@@ -7,6 +7,8 @@ import io.dropwizard.hibernate.HibernateBundle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.Serializable;
+
 /**
  * Created by Yashi Agarwal on 08-05-2017.
  */
@@ -19,7 +21,7 @@ public class AddressDao extends AbstractDAO<Address> {
         super(bundle.getSessionFactory());
     }
 
-    public void save(Address address) {
-        currentSession().save(address);
+    public Serializable save(Address address) {
+        return currentSession().save(address);
     }
 }

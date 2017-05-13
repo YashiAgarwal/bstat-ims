@@ -8,6 +8,7 @@ import org.hibernate.Criteria;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -22,8 +23,8 @@ public class StoresDao extends AbstractDAO<Store> {
         super(bundle.getSessionFactory());
     }
 
-    public void save(Store store) {
-        currentSession().save(store);
+    public Serializable save(Store store) {
+        return currentSession().save(store);
     }
 
     public List<Store> getAllStores(){
