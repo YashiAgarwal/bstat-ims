@@ -47,17 +47,14 @@ public class IMSResource {
     @UnitOfWork
     @Timed
     @ExceptionMetered
-    public Response addStore(@Valid StoreDTO storeDTO) throws ApiException {
+    public Response addStore(@Valid StoreDTO storeDTO){
         try {
-
-            Serializable serializable = storesController.addNewStore(storeDTO);
+            storesController.addNewStore(storeDTO);
             logger.info("New Store added successfully: " + storeDTO.getStoreName());
-            return Response.ok(new SuccessResponse(HttpStatus.OK_200, "New Store added successfully",
-                    ((Long) serializable).byteValue())).build();
+            return Response.ok(new SuccessResponse(HttpStatus.OK_200, "New Store added successfully")).build();
         } catch (Exception e) {
             logger.error("Add New Store Exception", e.getMessage(), e);
-            throw new ApiException(Response.Status.INTERNAL_SERVER_ERROR, "Add New Store Exception");
-            //Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Add New Store Exception" + e.getMessage()).build();
         }
     }
 
@@ -76,8 +73,7 @@ public class IMSResource {
                     ((Long) serializable).byteValue())).build();
         } catch (Exception e) {
             logger.error("Add New Store Exception", e.getMessage(), e);
-            throw new ApiException(Response.Status.INTERNAL_SERVER_ERROR, "Adding New Address Exception");
-            //Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Add New Store Exception" + e.getMessage()).build();
         }
     }
 
