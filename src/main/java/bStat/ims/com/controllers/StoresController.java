@@ -1,6 +1,6 @@
 package bStat.ims.com.controllers;
 
-import bStat.ims.com.Request.AddressRequest;
+import bStat.ims.com.FeedObjects.AddressDTO;
 import bStat.ims.com.common.dao.AddressDao;
 import bStat.ims.com.common.dao.StoresDao;
 import bStat.ims.com.common.models.tables.Address;
@@ -8,7 +8,7 @@ import bStat.ims.com.common.models.tables.Store;
 import com.google.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import bStat.ims.com.Request.StoreRequest;
+import bStat.ims.com.FeedObjects.StoreDTO;
 
 import java.io.Serializable;
 
@@ -28,16 +28,16 @@ public class StoresController {
         this.storesDao = storesDao;
     }
 
-    public Serializable addNewStore(StoreRequest storeRequest) {
-        Store store = new Store(storeRequest.getAddressId(), storeRequest.getStoreName(),
-                storeRequest.getPhone_number(), storeRequest.getInchargePerson());
+    public Serializable addNewStore(StoreDTO storeDTO) {
+        Store store = new Store(storeDTO.getAddressId(), storeDTO.getStoreName(),
+                storeDTO.getPhone_number(), storeDTO.getInchargePerson());
         return storesDao.save(store);
     }
 
-    public Serializable addNewAddress(AddressRequest addressRequest) {
-        Address address = new Address(addressRequest.getAddressLine1(), addressRequest.getAddressLine2(), addressRequest.getState(),
-                addressRequest.getCity(), addressRequest.getCountry(), addressRequest.getPincode(),
-                addressRequest.getLandmark(), addressRequest.getCreationDate(), addressRequest.getLastModified());
+    public Serializable addNewAddress(AddressDTO addressDTO) {
+        Address address = new Address(addressDTO.getAddressLine1(), addressDTO.getAddressLine2(), addressDTO.getState(),
+                addressDTO.getCity(), addressDTO.getCountry(), addressDTO.getPincode(),
+                addressDTO.getLandmark(), addressDTO.getCreationDate(), addressDTO.getLastModified());
         return addressDao.save(address);
     }
 }

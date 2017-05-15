@@ -1,11 +1,10 @@
 package bStat.ims.com.resources;
 
-import bStat.ims.com.Request.AddressRequest;
-import bStat.ims.com.Request.StoreRequest;
+import bStat.ims.com.FeedObjects.AddressDTO;
+import bStat.ims.com.FeedObjects.StoreDTO;
 import bStat.ims.com.Response.SuccessResponse;
 import bStat.ims.com.common.dao.StoresDao;
 import bStat.ims.com.common.exceptions.ApiException;
-import bStat.ims.com.common.exceptions.ResponseErrorMsg;
 import bStat.ims.com.common.models.tables.Store;
 import bStat.ims.com.controllers.*;
 import com.codahale.metrics.annotation.ExceptionMetered;
@@ -13,7 +12,6 @@ import com.codahale.metrics.annotation.Timed;
 import com.google.inject.Inject;
 import io.dropwizard.hibernate.UnitOfWork;
 import org.eclipse.jetty.http.HttpStatus;
-import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,7 +23,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -50,9 +47,11 @@ public class IMSResource {
     @UnitOfWork
     @Timed
     @ExceptionMetered
-    public Response addStore(@Valid StoreRequest storeRequest) throws ApiException {
+    public Response addStore(@Valid StoreDTO storeDTO) throws ApiException {
         try {
-            Serializable serializable = storesController.addNewStore(storeRequest);
+
+            Serializable serializable = storesController.addNewStore(storeDTO);
+            logger.info("New Store added successfully: " + storeDTO.getStoreName());
             return Response.ok(new SuccessResponse(HttpStatus.OK_200, "New Store added successfully",
                     ((Long) serializable).byteValue())).build();
         } catch (Exception e) {
@@ -69,14 +68,15 @@ public class IMSResource {
     @UnitOfWork
     @Timed
     @ExceptionMetered
-    public Response addAddress(@Valid AddressRequest addressRequest) throws ApiException {
+    public Response addAddress(@Valid AddressDTO addressDTO) throws ApiException {
         try {
-            Serializable serializable = storesController.addNewAddress(addressRequest);
+            Serializable serializable = storesController.addNewAddress(addressDTO);
+            logger.info("New Address added successfully: " + addressDTO.getAddressLine1());
             return Response.ok(new SuccessResponse(HttpStatus.OK_200, "Address added successfully",
                     ((Long) serializable).byteValue())).build();
         } catch (Exception e) {
             logger.error("Add New Store Exception", e.getMessage(), e);
-            throw new ApiException(Response.Status.INTERNAL_SERVER_ERROR, "Add New Address Exception");
+            throw new ApiException(Response.Status.INTERNAL_SERVER_ERROR, "Adding New Address Exception");
             //Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
         }
     }
@@ -88,7 +88,7 @@ public class IMSResource {
     @UnitOfWork
     @Timed
     @ExceptionMetered
-    public List<Store> getAllStore() throws ApiException {
+    public List<Store> getAllStores() throws ApiException {
         try {
             return storesDao.getAllStores();
         } catch (Exception e) {

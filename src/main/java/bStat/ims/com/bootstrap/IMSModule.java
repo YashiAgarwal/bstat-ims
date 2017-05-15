@@ -1,5 +1,6 @@
 package bStat.ims.com.bootstrap;
 
+import bStat.ims.com.Validators.AddRequestValidators;
 import bStat.ims.com.common.dao.StoresDao;
 import bStat.ims.com.config.IMSConfiguration;
 import bStat.ims.com.controllers.ProductTransactionsController;
@@ -54,5 +55,11 @@ public class IMSModule extends AbstractModule {
     @Singleton
     public ProductTransactionsController provideProductTransactionsController() {
         return new ProductTransactionsController();
+    }
+
+    @Provides
+    @Singleton
+    public AddRequestValidators provideAddRequestValidators() {
+        return new AddRequestValidators();
     }
 }

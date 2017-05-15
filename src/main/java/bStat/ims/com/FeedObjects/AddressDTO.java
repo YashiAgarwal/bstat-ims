@@ -1,13 +1,11 @@
-package bStat.ims.com.Request;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
+package bStat.ims.com.FeedObjects;
 
 import java.util.Date;
 
 /**
  * Created by prashant.agarwal on 13/05/17.
  */
-public class AddressRequest {
+public class AddressDTO {
 
     private String addressLine1;
 
@@ -27,11 +25,11 @@ public class AddressRequest {
 
     private Date lastModified;
 
-    public AddressRequest() {
+    public AddressDTO() {
     }
 
-    public AddressRequest(String addressLine1, String addressLine2, String state, String city, String country,
-                          String pincode, String landmark, Date creationDate, Date lastModified) {
+    public AddressDTO(String addressLine1, String addressLine2, String state, String city, String country,
+                      String pincode, String landmark, Date creationDate, Date lastModified) {
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;
         this.state = state;

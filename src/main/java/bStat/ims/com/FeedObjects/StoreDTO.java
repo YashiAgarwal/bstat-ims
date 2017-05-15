@@ -1,4 +1,4 @@
-package bStat.ims.com.Request;
+package bStat.ims.com.FeedObjects;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 /**
  * Created by prashant.agarwal on 10/05/17.
  */
-public class StoreRequest {
+public class StoreDTO {
 
     private long addressId;
 
@@ -16,15 +16,15 @@ public class StoreRequest {
 
     private String inchargePerson;
 
-    public StoreRequest() {
+    public StoreDTO() {
     }
 
     public static void main(String[] args) throws JsonProcessingException {
-        StoreRequest storeRequest = new StoreRequest(123l, "Store1Name", "9535434455", "Prashant");
-        System.out.println(new ObjectMapper().writeValueAsString(storeRequest));
+        StoreDTO storeDTO = new StoreDTO(123l, "Store1Name", "9535434455", "Prashant");
+        System.out.println(new ObjectMapper().writeValueAsString(storeDTO));
     }
 
-    public StoreRequest(long addressId, String storeName, String phone_number, String inchargePerson) {
+    public StoreDTO(long addressId, String storeName, String phone_number, String inchargePerson) {
         this.addressId = addressId;
         this.storeName = storeName;
         this.phone_number = phone_number;
