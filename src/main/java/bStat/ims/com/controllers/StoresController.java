@@ -28,16 +28,16 @@ public class StoresController {
         this.storesDao = storesDao;
     }
 
-    public Serializable addNewStore(StoreDTO storeDTO) {
+    public void addNewStore(StoreDTO storeDTO) {
         Store store = new Store(storeDTO.getAddressId(), storeDTO.getStoreName(),
                 storeDTO.getPhone_number(), storeDTO.getInchargePerson());
-        return storesDao.save(store);
+        storesDao.save(store);
     }
 
-    public Serializable addNewAddress(AddressDTO addressDTO) {
+    public void addNewAddress(AddressDTO addressDTO) {
         Address address = new Address(addressDTO.getAddressLine1(), addressDTO.getAddressLine2(), addressDTO.getState(),
                 addressDTO.getCity(), addressDTO.getCountry(), addressDTO.getPincode(),
                 addressDTO.getLandmark(), addressDTO.getCreationDate(), addressDTO.getLastModified());
-        return addressDao.save(address);
+        addressDao.save(address);
     }
 }

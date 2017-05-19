@@ -23,8 +23,8 @@ public class StoresDao extends AbstractDAO<Store> {
         super(bundle.getSessionFactory());
     }
 
-    public Serializable save(Store store) {
-        return currentSession().save(store);
+    public void save(Store store) {
+        currentSession().save(store);
     }
 
     public List<Store> getAllStores(){

@@ -21,7 +21,7 @@ public class AddressDao extends AbstractDAO<Address> {
         super(bundle.getSessionFactory());
     }
 
-    public Serializable save(Address address) {
-        return currentSession().save(address);
+    public void save(Address address) {
+        currentSession().save(address);
     }
 }
