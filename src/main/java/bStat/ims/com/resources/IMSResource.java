@@ -67,10 +67,9 @@ public class IMSResource {
     @ExceptionMetered
     public Response addAddress(@Valid AddressDTO addressDTO) throws ApiException {
         try {
-            Serializable serializable = storesController.addNewAddress(addressDTO);
+            storesController.addNewAddress(addressDTO);
             logger.info("New Address added successfully: " + addressDTO.getAddressLine1());
-            return Response.ok(new SuccessResponse(HttpStatus.OK_200, "Address added successfully",
-                    ((Long) serializable).byteValue())).build();
+            return Response.ok(new SuccessResponse(HttpStatus.OK_200, "Address added successfully")).build();
         } catch (Exception e) {
             logger.error("Add New Store Exception", e.getMessage(), e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Add New Store Exception" + e.getMessage()).build();
