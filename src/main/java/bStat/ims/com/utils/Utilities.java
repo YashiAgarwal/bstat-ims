@@ -1,6 +1,7 @@
 package bStat.ims.com.utils;
 
 import javax.ws.rs.core.MultivaluedMap;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -12,23 +13,9 @@ public class Utilities {
         return UUID.randomUUID().toString().replaceAll("-", "");
     }
 
-    public static String getNDRClientForCronus() {
-        return "NDR";
-    }
-
     public static String getUID() {
         return UUID.randomUUID().toString().replaceAll("-", "");
     }
-
-    public static String getRequestId() {
-        return "NDR-" + UUID.randomUUID().toString().replaceAll("-", "");
-
-    }
-
-    public static List<String> retryDisposition(){
-        return Arrays.asList("CUSTOMER_REQUESTED_CALLBACK","Not Concluded","Customer Requested Callback");
-    }
-
 
     public static Map<String, String> getMap(MultivaluedMap<String, String> headers) {
         Map<String, String> parameters = new HashMap<String, String>();
@@ -43,5 +30,11 @@ public class Utilities {
     public static String getCampaign() {
         return "234189926";
     }
+
+    private static String commonDateFormat(Date date) {
+
+        return new SimpleDateFormat(Constants.SELF_SERVE_DATE_FORMAT).format(date);
+    }
+
 
 }

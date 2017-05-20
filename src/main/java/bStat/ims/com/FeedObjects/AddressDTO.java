@@ -1,35 +1,41 @@
 package bStat.ims.com.FeedObjects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
  * Created by prashant.agarwal on 13/05/17.
  */
+
 public class AddressDTO {
 
+    @NotNull
     private String addressLine1;
 
     private String addressLine2;
 
+    @NotNull
     private String state;
 
+    @NotNull
     private String city;
 
+    @NotNull
     private String country;
 
+    @NotNull
     private String pincode;
 
     private String landmark;
 
-    private Date creationDate;
-
-    private Date lastModified;
 
     public AddressDTO() {
     }
 
     public AddressDTO(String addressLine1, String addressLine2, String state, String city, String country,
-                      String pincode, String landmark, Date creationDate, Date lastModified) {
+                      String pincode, String landmark) {
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;
         this.state = state;
@@ -37,8 +43,6 @@ public class AddressDTO {
         this.country = country;
         this.pincode = pincode;
         this.landmark = landmark;
-        this.creationDate = creationDate;
-        this.lastModified = lastModified;
     }
 
     public String getAddressLine1() {
@@ -95,21 +99,5 @@ public class AddressDTO {
 
     public void setLandmark(String landmark) {
         this.landmark = landmark;
-    }
-
-    public Date getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    public Date getLastModified() {
-        return lastModified;
-    }
-
-    public void setLastModified(Date lastModified) {
-        this.lastModified = lastModified;
     }
 }

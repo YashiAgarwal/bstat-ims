@@ -14,6 +14,8 @@ import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import io.federecio.dropwizard.swagger.SwaggerBundle;
+import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,6 +46,13 @@ public class IMSApplication extends Application<IMSConfiguration> {
     @Override
     public void initialize(Bootstrap<IMSConfiguration> bootstrap) {
         bootstrap.addBundle(hibernate);
+
+        bootstrap.addBundle(new SwaggerBundle<IMSConfiguration>() {
+            @Override
+            public SwaggerBundleConfiguration getSwaggerBundleConfiguration(IMSConfiguration configuration) {
+                return configuration.getSwagger();
+            }
+        });
     }
 
     @Override

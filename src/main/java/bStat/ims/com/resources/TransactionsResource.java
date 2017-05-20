@@ -4,10 +4,13 @@ import bStat.ims.com.controllers.*;
 import com.codahale.metrics.annotation.ExceptionMetered;
 import com.codahale.metrics.annotation.Timed;
 import com.google.inject.Inject;
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
 import io.dropwizard.hibernate.UnitOfWork;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -19,8 +22,9 @@ import javax.ws.rs.core.Response;
  */
 
 @Path("/transact")
+@Api("Transactions Resource")
 @Produces(MediaType.APPLICATION_JSON)
-
+@Consumes(MediaType.APPLICATION_JSON)
 public class TransactionsResource {
 
     @Inject
@@ -35,6 +39,7 @@ public class TransactionsResource {
     @UnitOfWork
     @Timed
     @ExceptionMetered
+    @ApiOperation(value = "rawMaterialTransaction", response = Response.class)
     public Response rawMaterialTransaction() {
         try {
             //productTransactionsController.

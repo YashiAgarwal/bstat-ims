@@ -3,6 +3,8 @@ package bStat.ims.com.FeedObjects;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * Created by prashant.agarwal on 10/05/17.
  */
@@ -10,6 +12,7 @@ public class StoreDTO {
 
     private long addressId;
 
+    @NotNull
     private String storeName;
 
     private String phone_number;
