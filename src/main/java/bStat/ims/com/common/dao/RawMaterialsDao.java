@@ -1,5 +1,7 @@
 package bStat.ims.com.common.dao;
 
+import bStat.ims.com.common.exceptions.ApiException;
+import bStat.ims.com.common.exceptions.ResponseErrorMsg;
 import bStat.ims.com.common.models.tables.Address;
 import bStat.ims.com.common.models.tables.RawMaterials;
 import bStat.ims.com.common.models.tables.Store;
@@ -11,6 +13,7 @@ import org.hibernate.Criteria;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 /**
@@ -41,6 +44,9 @@ public class RawMaterialsDao extends AbstractDAO<RawMaterials> {
             RawMaterials rawMaterial = get(rawMaterialId);
             if(rawMaterial!=null){
                 currentSession().delete(rawMaterial);
+            }else{
+                throw new ApiException(Response.Status.BAD_REQUEST, ResponseErrorMsg.NOT_AVAILABLE,
+                        "No such raw material Id found in DB: "+rawMaterialId);
             }
             hSession.commit();
         } catch (Exception e) {

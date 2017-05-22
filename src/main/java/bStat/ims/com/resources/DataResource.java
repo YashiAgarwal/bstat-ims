@@ -101,7 +101,7 @@ public class DataResource {
     @UnitOfWork
     @Timed
     @ExceptionMetered
-    @ApiOperation(value = "deleteStore", response = Response.class)
+    @ApiOperation(value = "deleteStore")
     public void deleteStore(@QueryParam("storeId") long storeId) throws ApiException {
         try {
             storesDao.deleteStoreRowWithTxn(storeId);
@@ -154,7 +154,7 @@ public class DataResource {
     @UnitOfWork
     @Timed
     @ExceptionMetered
-    @ApiOperation(value = "deleteAddress", response = Response.class)
+    @ApiOperation(value = "deleteAddress")
     public void deleteAddress(@QueryParam("addressId") long addressId) throws ApiException {
         try {
             addressDao.deleteAddressRowWithTxn(addressId);
@@ -208,7 +208,7 @@ public class DataResource {
     @UnitOfWork
     @Timed
     @ExceptionMetered
-    @ApiOperation(value = "deleteRawMaterial", response = Response.class)
+    @ApiOperation(value = "deleteRawMaterial")
     public void deleteRawMaterial(@QueryParam("rawMaterialId") long rawMaterialId) throws ApiException {
         try {
             rawMaterialsDao.deleteRawMaterialRowWithTxn(rawMaterialId);

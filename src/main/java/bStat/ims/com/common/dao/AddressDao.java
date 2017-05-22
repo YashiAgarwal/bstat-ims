@@ -1,5 +1,7 @@
 package bStat.ims.com.common.dao;
 
+import bStat.ims.com.common.exceptions.ApiException;
+import bStat.ims.com.common.exceptions.ResponseErrorMsg;
 import bStat.ims.com.common.models.tables.Address;
 import bStat.ims.com.common.models.tables.Store;
 import bStat.ims.com.common.utils.HSession;
@@ -11,6 +13,7 @@ import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.ws.rs.core.Response;
 import java.io.Serializable;
 import java.util.List;
 
@@ -51,6 +54,9 @@ public class AddressDao extends AbstractDAO<Address> {
             Address address = get(addressId);
             if(address!=null){
                 currentSession().delete(address);
+            }else{
+                throw new ApiException(Response.Status.BAD_REQUEST, ResponseErrorMsg.NOT_AVAILABLE,
+                        "No such raw material Id found in DB: "+addressId);
             }
             hSession.commit();
         } catch (Exception e) {

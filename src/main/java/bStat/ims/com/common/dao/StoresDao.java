@@ -1,5 +1,7 @@
 package bStat.ims.com.common.dao;
 
+import bStat.ims.com.common.exceptions.ApiException;
+import bStat.ims.com.common.exceptions.ResponseErrorMsg;
 import bStat.ims.com.common.models.tables.Store;
 import bStat.ims.com.common.utils.HSession;
 import com.google.inject.Inject;
@@ -9,6 +11,7 @@ import org.hibernate.Criteria;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.ws.rs.core.Response;
 import java.io.Serializable;
 import java.util.List;
 
@@ -40,6 +43,9 @@ public class StoresDao extends AbstractDAO<Store> {
             Store store = get(storeId);
             if(store!=null){
                 currentSession().delete(store);
+            }else{
+                throw new ApiException(Response.Status.BAD_REQUEST, ResponseErrorMsg.NOT_AVAILABLE,
+                        "No such raw material Id found in DB: "+storeId);
             }
             hSession.commit();
         } catch (Exception e) {
