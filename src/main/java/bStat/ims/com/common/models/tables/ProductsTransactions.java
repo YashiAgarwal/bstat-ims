@@ -41,7 +41,6 @@ public class ProductsTransactions {
     private int lotScore;
 
     @Column(name = "comments")
-
     private String comments;
 
     @Column(name = "details")
