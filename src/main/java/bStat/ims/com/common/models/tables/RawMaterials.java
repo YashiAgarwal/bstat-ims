@@ -37,9 +37,8 @@ public class RawMaterials {
     public RawMaterials() {
     }
 
-    public RawMaterials(Long id, String name, UnitOfMeasurement unitOfMeasurement, String description,
+    public RawMaterials(String name, UnitOfMeasurement unitOfMeasurement, String description,
                         Date createdOn, Date modifiedOn) {
-        this.id = id;
         this.name = name;
         this.unitOfMeasurement = unitOfMeasurement;
         this.description = description;

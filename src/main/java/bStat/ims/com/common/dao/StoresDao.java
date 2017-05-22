@@ -1,6 +1,7 @@
 package bStat.ims.com.common.dao;
 
 import bStat.ims.com.common.models.tables.Store;
+import bStat.ims.com.common.utils.HSession;
 import com.google.inject.Inject;
 import io.dropwizard.hibernate.AbstractDAO;
 import io.dropwizard.hibernate.HibernateBundle;
@@ -30,6 +31,22 @@ public class StoresDao extends AbstractDAO<Store> {
     public List<Store> getAllStores(){
         Criteria cr = currentSession().createCriteria(Store.class);
         return cr.list();
+    }
+
+    public void deleteStoreRowWithTxn(long storeId) {
+        HSession hSession = new HSession();
+        hSession.openWithTransaction();
+        try {
+            Store store = get(storeId);
+            if(store!=null){
+                currentSession().delete(store);
+            }
+            hSession.commit();
+        } catch (Exception e) {
+            logger.error("Error while fetching deleteStoreRowWithTxn in Store table " + e.getMessage(), e);
+        } finally {
+            hSession.close();
+        }
     }
 
 }

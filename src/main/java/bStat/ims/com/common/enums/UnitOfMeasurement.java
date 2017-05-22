@@ -27,4 +27,6 @@ public enum UnitOfMeasurement {
     METER3,
     YARD3,
     KILOMETER3,
+    PIECE,
+    OTHER
 }

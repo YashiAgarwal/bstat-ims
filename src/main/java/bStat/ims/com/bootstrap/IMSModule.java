@@ -5,7 +5,7 @@ import bStat.ims.com.common.dao.AddressDao;
 import bStat.ims.com.common.dao.StoresDao;
 import bStat.ims.com.config.IMSConfiguration;
 import bStat.ims.com.controllers.ProductTransactionsController;
-import bStat.ims.com.controllers.StoresController;
+import bStat.ims.com.controllers.DataController;
 import com.codahale.metrics.MetricRegistry;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
@@ -48,8 +48,8 @@ public class IMSModule extends AbstractModule {
 
     @Provides
     @Singleton
-    public StoresController provideStoresController(StoresDao storesDao, AddressDao addressDao) {
-        return new StoresController(storesDao, addressDao);
+    public DataController provideStoresController(StoresDao storesDao, AddressDao addressDao) {
+        return new DataController(storesDao, addressDao);
     }
 
     @Provides

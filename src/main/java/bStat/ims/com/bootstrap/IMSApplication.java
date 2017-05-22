@@ -69,7 +69,7 @@ public class IMSApplication extends Application<IMSConfiguration> {
         GuiceInjector.assignInjector(injector);
 
         //------- registering app resources -----------
-        environment.jersey().register(injector.getInstance(IMSResource.class));
+        environment.jersey().register(injector.getInstance(DataResource.class));
         environment.jersey().register(injector.getInstance(HelloWorldResource.class));
 
         environment.lifecycle().manage(injector.getInstance(IMSManagedService.class));

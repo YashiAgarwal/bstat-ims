@@ -2,6 +2,7 @@ package bStat.ims.com.common.dao;
 
 import bStat.ims.com.common.models.tables.Address;
 import bStat.ims.com.common.models.tables.Store;
+import bStat.ims.com.common.utils.HSession;
 import com.google.inject.Inject;
 import io.dropwizard.hibernate.AbstractDAO;
 import io.dropwizard.hibernate.HibernateBundle;
@@ -41,5 +42,21 @@ public class AddressDao extends AbstractDAO<Address> {
         if(list != null && !list.isEmpty())
             return list.get(0);
         return null;
+    }
+
+    public void deleteAddressRowWithTxn(long addressId) {
+        HSession hSession = new HSession();
+        hSession.openWithTransaction();
+        try {
+            Address address = get(addressId);
+            if(address!=null){
+                currentSession().delete(address);
+            }
+            hSession.commit();
+        } catch (Exception e) {
+            logger.error("Error while fetching deleteAddressRowWithTxn in Store table " + e.getMessage(), e);
+        } finally {
+            hSession.close();
+        }
     }
 }

@@ -1,33 +1,36 @@
 package bStat.ims.com.controllers;
 
 import bStat.ims.com.FeedObjects.AddressDTO;
+import bStat.ims.com.FeedObjects.RawMaterialDTO;
 import bStat.ims.com.common.dao.AddressDao;
+import bStat.ims.com.common.dao.RawMaterialsDao;
 import bStat.ims.com.common.dao.StoresDao;
 import bStat.ims.com.common.models.tables.Address;
+import bStat.ims.com.common.models.tables.RawMaterials;
 import bStat.ims.com.common.models.tables.Store;
-import bStat.ims.com.utils.Constants;
 import com.google.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import bStat.ims.com.FeedObjects.StoreDTO;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  * Created by prashant.agarwal on 09/05/17.
  */
-public class StoresController {
-    private static final Logger logger = LoggerFactory.getLogger(StoresController.class);
+public class DataController {
+    private static final Logger logger = LoggerFactory.getLogger(DataController.class);
 
     @Inject
     private StoresDao storesDao;
     @Inject
     private AddressDao addressDao;
+    @Inject
+    private RawMaterialsDao rawMaterialsDao;
 
     @Inject
-    public StoresController(StoresDao storesDao,
-                            AddressDao addressDao) {
+    public DataController(StoresDao storesDao,
+                          AddressDao addressDao) {
         this.storesDao = storesDao;
         this.addressDao = addressDao;
     }
@@ -43,5 +46,11 @@ public class StoresController {
                 addressDTO.getCity(), addressDTO.getCountry(), addressDTO.getPincode(),
                 addressDTO.getLandmark(), new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
         addressDao.save(address);
+    }
+
+    public void addNewRawMaterial(RawMaterialDTO rawMaterialDTO) {
+        RawMaterials rawMaterials = new RawMaterials(rawMaterialDTO.getName(), rawMaterialDTO.getUnitOfMeasurement(),
+                rawMaterialDTO.getDescription(), new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
+        rawMaterialsDao.save(rawMaterials);
     }
 }
