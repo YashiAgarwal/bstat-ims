@@ -18,20 +18,20 @@ public class ProductsTransactions {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "Product_Id")
-    private long ProductId;
+    @Column(name = "product_id")
+    private long productId;
 
-    @Column(name = "Transaction_type")
+    @Column(name = "transaction_type")
     @Enumerated(EnumType.STRING)
     private ProductTransactionTypes productTransactionTypes;
 
-    @Column(name = "Worker_Id")
-    private long WorkerId;
+    @Column(name = "worker_id")
+    private long workerId;
 
-    @Column(name = "seller_Id")
+    @Column(name = "seller_id")
     private long sellerId;
 
-    @Column(name = "customer_Id")
+    @Column(name = "customer_id")
     private long customerId;
 
     @Column(name = "quantity")
@@ -59,11 +59,13 @@ public class ProductsTransactions {
         this.productTransactionTypes = productTransactionTypes;
     }
 
-    public ProductsTransactions(Long id, Long productId, ProductTransactionTypes productTransactionTypes, Long workerId, Long sellerId, Long customerId, int quantity, int lotScore, String comments, String details, Date createdOn, Date expiryDate, Date updatedOn) {
+    public ProductsTransactions(Long id, Long productId, ProductTransactionTypes productTransactionTypes, Long workerId,
+                                Long sellerId, Long customerId, int quantity, int lotScore, String comments, String details,
+                                Date createdOn, Date expiryDate, Date updatedOn) {
         this.id = id;
-        ProductId = productId;
+        this.productId = productId;
         this.productTransactionTypes = productTransactionTypes;
-        WorkerId = workerId;
+        this.workerId = workerId;
         this.sellerId = sellerId;
         this.customerId = customerId;
         this.quantity = quantity;
@@ -85,11 +87,11 @@ public class ProductsTransactions {
     }
 
     public Long getProductId() {
-        return ProductId;
+        return productId;
     }
 
     public void setProductId(Long productId) {
-        ProductId = productId;
+        productId = productId;
     }
 
     public ProductTransactionTypes getProductTransactionTypes() {
@@ -101,11 +103,11 @@ public class ProductsTransactions {
     }
 
     public Long getWorkerId() {
-        return WorkerId;
+        return workerId;
     }
 
     public void setWorkerId(Long workerId) {
-        WorkerId = workerId;
+        workerId = workerId;
     }
 
     public long getSellerId() {

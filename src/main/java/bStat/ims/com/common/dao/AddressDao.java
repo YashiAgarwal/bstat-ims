@@ -3,7 +3,6 @@ package bStat.ims.com.common.dao;
 import bStat.ims.com.common.exceptions.ApiException;
 import bStat.ims.com.common.exceptions.ResponseErrorMsg;
 import bStat.ims.com.common.models.tables.Address;
-import bStat.ims.com.common.models.tables.Store;
 import bStat.ims.com.common.utils.HSession;
 import com.google.inject.Inject;
 import io.dropwizard.hibernate.AbstractDAO;
@@ -34,12 +33,12 @@ public class AddressDao extends AbstractDAO<Address> {
     }
 
     public List<Address> getAllAddresses(){
-        Criteria cr = currentSession().createCriteria(Store.class);
+        Criteria cr = currentSession().createCriteria(Address.class);
         return cr.list();
     }
 
     public Address getAddressWithAddressId(long addressId){
-        Criteria cr = currentSession().createCriteria(Store.class);
+        Criteria cr = currentSession().createCriteria(Address.class);
         cr.add(Restrictions.eq("id", addressId));
         List<Address> list = cr.list();
         if(list != null && !list.isEmpty())
