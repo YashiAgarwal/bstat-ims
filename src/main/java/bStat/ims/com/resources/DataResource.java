@@ -34,7 +34,7 @@ import java.util.List;
  * Created by prashant170392 on 01/05/2017
  */
 
-@Path("/ims")
+@Path("/data")
 @Api("Data Resource")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
