@@ -3,7 +3,6 @@ package bStat.ims.com.bootstrap;
 import bStat.ims.com.common.models.tables.*;
 import bStat.ims.com.common.utils.GuiceInjector;
 import bStat.ims.com.config.IMSConfiguration;
-import bStat.ims.com.resources.HelloWorldResource;
 import com.codahale.metrics.JmxReporter;
 import com.codahale.metrics.MetricRegistry;
 import bStat.ims.com.resources.*;
@@ -70,7 +69,6 @@ public class IMSApplication extends Application<IMSConfiguration> {
 
         //------- registering app resources -----------
         environment.jersey().register(injector.getInstance(DataResource.class));
-        environment.jersey().register(injector.getInstance(HelloWorldResource.class));
 
         environment.lifecycle().manage(injector.getInstance(IMSManagedService.class));
     }
