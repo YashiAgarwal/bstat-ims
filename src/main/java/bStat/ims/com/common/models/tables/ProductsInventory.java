@@ -17,16 +17,16 @@ public class ProductsInventory {
     private long id;
 
     @Column(name = "product_id")
-    private String productId;
+    private long productId;
 
     @Column(name = "units_in_stock")
-    private Integer unitsInStock;
+    private int unitsInStock;
 
     @Column(name = "units_booked")
-    private Integer unitsBooked;
+    private int unitsBooked;
 
     @Column(name = "net_stock")
-    private Integer netStock;
+    private int netStock;
 
     @Column(name = "created_on")
     private Date createdOn;
@@ -37,7 +37,7 @@ public class ProductsInventory {
     public ProductsInventory() {
     }
 
-    public ProductsInventory(Long id, String productId, Integer unitsInStock, Integer unitsBooked,
+    public ProductsInventory(Long id, long productId, Integer unitsInStock, Integer unitsBooked,
                              Integer netStock, Date createdOn, Date modifiedOn) {
         this.id = id;
         this.productId = productId;
@@ -56,11 +56,11 @@ public class ProductsInventory {
         this.id = id;
     }
 
-    public String getProductId() {
+    public long getProductId() {
         return productId;
     }
 
-    public void setProductId(String productId) {
+    public void setProductId(long productId) {
         this.productId = productId;
     }
 

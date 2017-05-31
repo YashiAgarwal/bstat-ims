@@ -46,11 +46,11 @@ public class ProductsTransactions {
     @Column(name = "details")
     private String details;
 
+    @Column(name = "expiry_date")   // for the products that taken input in current transaction lot
+    private Date expiryDate;
+
     @Column(name = "created_on")
     private Date createdOn;
-
-    @Column(name = "expiry_date")
-    private Date expiryDate;
 
     @Column(name = "updated_on")
     private Date updatedOn;

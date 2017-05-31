@@ -23,7 +23,7 @@ public class StockInStore {
     private long productId;
 
     @Column(name = "quantity")
-    private Integer quantity;
+    private int quantity;
 
     @Column(name = "created_on")
     private Date createdOn;

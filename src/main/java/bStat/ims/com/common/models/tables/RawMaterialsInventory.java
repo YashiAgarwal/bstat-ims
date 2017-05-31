@@ -19,16 +19,16 @@ public class RawMaterialsInventory {
     private long rawMaterialsId;
 
     @Column(name = "units_in_stock")
-    private String unitsInStock;
+    private int unitsInStock;
 
     @Column(name = "units_in_production")
-    private String unitsInProduction;
+    private int unitsInProduction;
 
 
     public RawMaterialsInventory() {
     }
 
-    public RawMaterialsInventory(Long id, Long rawMaterialsId, String unitsInStock, String unitsInProduction) {
+    public RawMaterialsInventory(Long id, Long rawMaterialsId, int unitsInStock, int unitsInProduction) {
         this.id = id;
         this.rawMaterialsId = rawMaterialsId;
         this.unitsInStock = unitsInStock;
@@ -51,19 +51,19 @@ public class RawMaterialsInventory {
         this.rawMaterialsId = rawMaterialsId;
     }
 
-    public String getUnitsInStock() {
+    public int getUnitsInStock() {
         return unitsInStock;
     }
 
-    public void setUnitsInStock(String unitsInStock) {
+    public void setUnitsInStock(int unitsInStock) {
         this.unitsInStock = unitsInStock;
     }
 
-    public String getUnitsInProduction() {
+    public int getUnitsInProduction() {
         return unitsInProduction;
     }
 
-    public void setUnitsInProduction(String unitsInProduction) {
+    public void setUnitsInProduction(int unitsInProduction) {
         this.unitsInProduction = unitsInProduction;
     }
 }
