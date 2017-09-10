@@ -1,5 +1,8 @@
 package bStat.ims.com.common.models.tables;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -8,16 +11,20 @@ import java.util.Date;
  */
 
 @Entity
+@Data
+@NoArgsConstructor
 @Table(name = "products_inventory")
 public class ProductsInventory {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private String id;
 
     @Column(name = "product_id")
-    private long productId;
+    private String productId;
+
+    @Column(name = "product_variation_id")
+    private String productVariationId;
 
     @Column(name = "units_in_stock")
     private int unitsInStock;
@@ -33,74 +40,4 @@ public class ProductsInventory {
 
     @Column(name = "modified_on")
     private Date modifiedOn;
-
-    public ProductsInventory() {
-    }
-
-    public ProductsInventory(Long id, long productId, Integer unitsInStock, Integer unitsBooked,
-                             Integer netStock, Date createdOn, Date modifiedOn) {
-        this.id = id;
-        this.productId = productId;
-        this.unitsInStock = unitsInStock;
-        this.unitsBooked = unitsBooked;
-        this.netStock = netStock;
-        this.createdOn = createdOn;
-        this.modifiedOn = modifiedOn;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(long productId) {
-        this.productId = productId;
-    }
-
-    public Integer getUnitsInStock() {
-        return unitsInStock;
-    }
-
-    public void setUnitsInStock(Integer unitsInStock) {
-        this.unitsInStock = unitsInStock;
-    }
-
-    public Integer getUnitsBooked() {
-        return unitsBooked;
-    }
-
-    public void setUnitsBooked(Integer unitsBooked) {
-        this.unitsBooked = unitsBooked;
-    }
-
-    public Integer getNetStock() {
-        return netStock;
-    }
-
-    public void setNetStock(Integer netStock) {
-        this.netStock = netStock;
-    }
-
-    public Date getCreatedOn() {
-        return createdOn;
-    }
-
-    public void setCreatedOn(Date createdOn) {
-        this.createdOn = createdOn;
-    }
-
-    public Date getModifiedOn() {
-        return modifiedOn;
-    }
-
-    public void setModifiedOn(Date modifiedOn) {
-        this.modifiedOn = modifiedOn;
-    }
 }

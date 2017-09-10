@@ -1,6 +1,9 @@
 package bStat.ims.com.common.models.tables;
 
 import bStat.ims.com.common.enums.ProductTransactionTypes;
+import bStat.ims.com.common.enums.TransactionSubType;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -10,40 +13,51 @@ import java.util.Date;
  */
 
 @Entity
+@Data
+@NoArgsConstructor
 @Table(name = "product_transactions")
 public class ProductsTransactions {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private String id;
 
     @Column(name = "product_id")
-    private long productId;
+    private String productId;
+
+    @Column(name = "product_variation_id")
+    private String productVariationId;
 
     @Column(name = "transaction_type")
     @Enumerated(EnumType.STRING)
     private ProductTransactionTypes productTransactionTypes;
 
-    @Column(name = "worker_id")
-    private long workerId;
+    @Column(name = "transaction_sub_type")
+    @Enumerated(EnumType.STRING)
+    private TransactionSubType productTransactionSubTypes;
+
+    @Column(name = "worker_id")     //either of worker_id, seller_id, customer_id will be populated here
+    private String workerId;
 
     @Column(name = "seller_id")
-    private long sellerId;
+    private String sellerId;
 
     @Column(name = "customer_id")
-    private long customerId;
+    private String customerId;
 
     @Column(name = "quantity")
     private int quantity;
 
-    @Column(name = "lot_score")
-    private int lotScore;
+    @Column(name = "unit_price")
+    private Double unitPrice;       // null in case of IN_WORKER_PRODUCED
+
+    @Column(name = "score")
+    private Double score;
 
     @Column(name = "comments")
     private String comments;
 
-    @Column(name = "details")
+    @Column(name = "details")       // can have seqnumber/wt/size/other parameter of each item in the lot
     private String details;
 
     @Column(name = "expiry_date")   // for the products that taken input in current transaction lot
@@ -54,131 +68,4 @@ public class ProductsTransactions {
 
     @Column(name = "updated_on")
     private Date updatedOn;
-
-    public ProductsTransactions(ProductTransactionTypes productTransactionTypes) {
-        this.productTransactionTypes = productTransactionTypes;
-    }
-
-    public ProductsTransactions(Long id, Long productId, ProductTransactionTypes productTransactionTypes, Long workerId,
-                                Long sellerId, Long customerId, int quantity, int lotScore, String comments, String details,
-                                Date createdOn, Date expiryDate, Date updatedOn) {
-        this.id = id;
-        this.productId = productId;
-        this.productTransactionTypes = productTransactionTypes;
-        this.workerId = workerId;
-        this.sellerId = sellerId;
-        this.customerId = customerId;
-        this.quantity = quantity;
-        this.lotScore = lotScore;
-        this.comments = comments;
-        this.details = details;
-        this.createdOn = createdOn;
-        this.expiryDate = expiryDate;
-        this.updatedOn = updatedOn;
-    }
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Long productId) {
-        productId = productId;
-    }
-
-    public ProductTransactionTypes getProductTransactionTypes() {
-        return productTransactionTypes;
-    }
-
-    public void setProductTransactionTypes(ProductTransactionTypes productTransactionTypes) {
-        this.productTransactionTypes = productTransactionTypes;
-    }
-
-    public Long getWorkerId() {
-        return workerId;
-    }
-
-    public void setWorkerId(Long workerId) {
-        workerId = workerId;
-    }
-
-    public long getSellerId() {
-        return sellerId;
-    }
-
-    public void setSellerId(long sellerId) {
-        this.sellerId = sellerId;
-    }
-
-    public long getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(long customerId) {
-        this.customerId = customerId;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public int getLotScore() {
-        return lotScore;
-    }
-
-    public void setLotScore(int lotScore) {
-        this.lotScore = lotScore;
-    }
-
-    public String getComments() {
-        return comments;
-    }
-
-    public void setComments(String comments) {
-        this.comments = comments;
-    }
-
-    public String getDetails() {
-        return details;
-    }
-
-    public void setDetails(String details) {
-        this.details = details;
-    }
-
-    public Date getCreatedOn() {
-        return createdOn;
-    }
-
-    public void setCreatedOn(Date createdOn) {
-        this.createdOn = createdOn;
-    }
-
-    public Date getExpiryDate() {
-        return expiryDate;
-    }
-
-    public void setExpiryDate(Date expiryDate) {
-        this.expiryDate = expiryDate;
-    }
-
-    public Date getUpdatedOn() {
-        return updatedOn;
-    }
-
-    public void setUpdatedOn(Date updatedOn) {
-        this.updatedOn = updatedOn;
-    }
 }

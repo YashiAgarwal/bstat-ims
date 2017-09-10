@@ -1,5 +1,8 @@
 package bStat.ims.com.common.models.tables;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -8,19 +11,23 @@ import java.util.Date;
  */
 
 @Entity
+@Data
+@NoArgsConstructor
 @Table(name = "stock_in_store")
 public class StockInStore {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private String id;
 
     @Column(name = "store_id")
-    private long storeId;
+    private String storeId;
 
     @Column(name = "product_id")        //can be raw material/product
-    private long productId;
+    private String productId;
+
+    @Column(name = "product_variation_id")
+    private String productVariationId;
 
     @Column(name = "quantity")
     private int quantity;
@@ -30,64 +37,4 @@ public class StockInStore {
 
     @Column(name = "modified_on")
     private Date modifiedOn;
-
-    public StockInStore() {
-    }
-
-    public StockInStore(Long id, long storeId, long productId, Integer quantity, Date createdOn, Date modifiedOn) {
-        this.id = id;
-        this.storeId = storeId;
-        this.productId = productId;
-        this.quantity = quantity;
-        this.createdOn = createdOn;
-        this.modifiedOn = modifiedOn;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getStoreId() {
-        return storeId;
-    }
-
-    public void setStoreId(long storeId) {
-        this.storeId = storeId;
-    }
-
-    public long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(long productId) {
-        this.productId = productId;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    public Date getCreatedOn() {
-        return createdOn;
-    }
-
-    public void setCreatedOn(Date createdOn) {
-        this.createdOn = createdOn;
-    }
-
-    public Date getModifiedOn() {
-        return modifiedOn;
-    }
-
-    public void setModifiedOn(Date modifiedOn) {
-        this.modifiedOn = modifiedOn;
-    }
 }
